@@ -30,6 +30,22 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
+      - name: Make changes
+        run: |
+          git config --global user.email "sarikashaikh372@gmail.com"
+          git config --global user.name "SarikaShaikh123"
+
+          echo "New changes" >> changes.txt
+          git add changes.txt
+          git commit -m "Add changes"
+          
+      - name: Push Changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.Token}}
+          run: |
+             git push origin feature
+       
+
       - name: Use GitHub API with PAT
         env:
           GITHUB_TOKEN: ${{ secrets.Token}}
