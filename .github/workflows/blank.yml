@@ -32,7 +32,9 @@ jobs:
 
       - name: Use GitHub API with PAT
         env:
-         GITHUB_TOKEN: ${{ secrets.Token}}
+          GITHUB_TOKEN: ${{ secrets.Token}}
+        run: |
+          curl -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
